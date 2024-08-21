@@ -4,15 +4,15 @@ import java.util.Map;
 
 public class Scrabble {
     Map<Character, Integer> letterScores;
-
-    public Scrabble() {
-        Alphabet a = new Alphabet();
-        this.letterScores = a.getLetterScores();
+    Alphabet alphabet;
+    public Scrabble(Alphabet alphabet) {
+        this.alphabet = alphabet;
+        this.letterScores = this.alphabet.getLetterScores();
     }
 
     public int score(String word) {
         int total = 0;
-
+        word = word.toLowerCase();
         for (char ch : word.toCharArray()) {
             if (this.letterScores.containsKey(ch)) {
                 int score = this.letterScores.get(ch);
